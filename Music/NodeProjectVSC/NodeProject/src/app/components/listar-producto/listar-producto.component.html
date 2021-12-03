@@ -1,0 +1,41 @@
+<div class=" container mt-5">
+    <div class="row">
+        <div class=" col-lg-10 offset-lg-1">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">LISTADO USUARIOS</span>
+                    <button class="btn btn-lg btn-primary float-end" routerLink="/crear-producto" > REGISTRAR </button>
+                    <table *ngIf="listUsuarios.length > 0" class="table table-success table-striped mt-5">
+                        <thead>
+                          <tr>
+                            <th scope="col">Username</th>
+                            <th scope="col">Documento</th>
+                            <th scope="col">Ciudad</th>
+                            <th scope="col">Contraseña</th>
+                            <th scope="col">Direccion</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Email</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor = "let usuario of listUsuarios">
+                            <td>{{usuario.Username}}</td>
+                            <td>{{usuario.id_documento}}</td>
+                            <td>{{usuario.ciudad}}</td>
+                            <td>{{usuario.contrasena}}</td>
+                            <td>{{usuario.direccion}}</td>
+                            <td>{{usuario.telefono}}</td>
+                            <td>{{usuario.email}}</td>
+                            <td><i [routerLink]="['/editar-usuario', usuario._id]" class="fas fa-edit text-primary"></i></td>
+                            <td><i (click)="eliminarUsuario(usuario._id)" class="fas fa-trash-alt text-danger"></i></td>               
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h5 *ngIf="listUsuarios.length == 0">No hay usuarios para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
